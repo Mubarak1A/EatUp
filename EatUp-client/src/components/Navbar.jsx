@@ -28,7 +28,7 @@ export default function Navbar() {
     </>
 
     return (
-        <div className='max-w-screen container mx-auto'>
+        <div className='max-w-screen-2xl container mx-auto'>
             <div className="navbar xl:px-24">
                 <div className="navbar-start">
                     <div className="dropdown">
