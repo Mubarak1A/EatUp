@@ -12,7 +12,9 @@ export default function Banner() {
                 </div>
 
                 {/* image */}
-                <div className="md:w-1/2">Right</div>
+                <div className="md:w-1/2">
+                    <img src="/images/home/banner.png" alt="" />
+                </div>
             </div>
         </div>
     )
