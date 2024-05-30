@@ -13,11 +13,11 @@ export default function Banner() {
                             <div>
                                 <h5 className='font-medium md-1'>Spicy Noodles</h5>
                                 <div className="rating">
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly/>
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly/>
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly checked />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                 </div>
                                 <p className='text-red'>#1800.00</p>
                             </div>
@@ -27,11 +27,11 @@ export default function Banner() {
                             <div>
                                 <h5 className='font-medium md-1'>Spicy Noodles</h5>
                                 <div className="rating">
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  readOnly/>
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  readOnly/>
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly checked />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
+                                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                 </div>
                                 <p className='text-red'>#1800.00</p>
                             </div>

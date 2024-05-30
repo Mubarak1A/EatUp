@@ -1,18 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick"
+import Card from '../../../components/Card';
 
 export default function SpecialDishes() {
     const [recipes, setRecipes] = useState([])
     const slider = React.useRef(null)
 
+    useEffect(() => {
+        fetch('/menu.json').then(res => res.json()).then(data => {
+            const specials = data.filter(item => item.category === 'popular')
+            setRecipes(specials)
+        })
+    }, [])
+
+    //slider settings 
     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         initialSlide: 0,
         responsive: [
             {
@@ -49,30 +58,11 @@ export default function SpecialDishes() {
                 <h2 className='title md:w-[520px]'>Standout Dishes From Our Menu</h2>
             </div>
             <Slider {...settings}>
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
-                <div>
-                    <h3>7</h3>
-                </div>
-                <div>
-                    <h3>8</h3>
-                </div>
+                {
+                    recipes.map((item, index) => [
+                        <Card key={index} item={item} />
+                    ])
+                }
             </Slider>
         </div>
     )

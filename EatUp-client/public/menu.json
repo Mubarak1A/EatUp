@@ -5,7 +5,7 @@
         "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
         "image": "/images/recipes/img1.png",
         "category": "salad",
-        "price": 14.7
+        "price": 1400
     },
     {
         "_id": "642c155b2c4774f05c36eeb9",
@@ -13,7 +13,7 @@
         "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
         "image": "/images/recipes/img2.png",
         "category": "drinks",
-        "price": 14.7
+        "price": 1400
     },
     {
         "_id": "642c155b2c4774f05c36ee7c",
@@ -21,7 +21,7 @@
         "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
         "image": "/images/recipes/img1.png",
         "category": "popular",
-        "price": 14.5
+        "price": 1400
     },
     {
         "_id": "642c155b2c4774f05c36ee88",
@@ -189,7 +189,7 @@
         "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
         "image": "/images/recipes/img3.png",
         "category": "salad",
-        "price": 13.5
+        "price": 1300.5
     },
     {
         "_id": "642c155b2c4774f05c36eeba",
