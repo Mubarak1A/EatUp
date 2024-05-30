@@ -15,7 +15,7 @@ export default function Card({ item }) {
 
     return (
 
-        <div className="card w-96 bg-base-100 shadow-xl mx-5 relative">
+        <div className="card w-86 bg-base-100 shadow-xl mx-5 relative">
             <div className={'rating gap-1 absoluten flex justify-end'}>
                 <input type="radio" name="rating-3" 
                 className={` m-4 mask mask-heart bg-green ${isHeartFilled ? "bg-green" : "bg-secoundary"}`}
