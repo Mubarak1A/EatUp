@@ -15,7 +15,7 @@ export default function Card({ item }) {
 
     return (
 
-        <div className="card w-86 bg-base-100 shadow-xl mx-5 relative">
+        <div className="card w-86 bg-base-100 shadow-xl mx-5 mb-10 relative">
             <div className={'rating gap-1 absoluten flex justify-end'}>
                 <input type="radio" name="rating-3" 
                 className={` m-4 mask mask-heart bg-green ${isHeartFilled ? "bg-green" : "bg-secoundary"}`}
@@ -27,7 +27,7 @@ export default function Card({ item }) {
                 </figure>
             </Link>
             <div className="card-body">
-                <h2 className="card-title">{item.name}</h2>
+                <Link to={item._id} ><h2 className="card-title">{item.name}</h2></Link>
                 <p>{item.recipe}</p>
                 <div className="card-actions justify-between items-center mt-2">
                     <h5 className='font-semibold '><span className='text-sm text-red'>#</span>{item.price}</h5>
