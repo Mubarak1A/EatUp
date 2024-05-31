@@ -30,7 +30,7 @@ export default function Card({ item }) {
                 <Link to={item._id} ><h2 className="card-title">{item.name}</h2></Link>
                 <p>{item.recipe}</p>
                 <div className="card-actions justify-between items-center mt-2">
-                    <h5 className='font-semibold '><span className='text-sm text-red'>#</span>{item.price}</h5>
+                    <h5 className='font-semibold '><span className='text-sm text-red'>N</span>{item.price}</h5>
                     <button className="btn bg-green text-white">Buy Now</button>
                 </div>
             </div>
