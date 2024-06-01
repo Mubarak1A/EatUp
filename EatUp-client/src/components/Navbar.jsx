@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BiPhoneCall } from "react-icons/bi";
+import { IoMdLogIn } from "react-icons/io";
 
 export default function Navbar() {
     const [sticky, setSticky] = useState(false)
@@ -89,7 +89,7 @@ export default function Navbar() {
                             </div>
                         </div>
                     </div>
-                    <a className="btn bg-green rounded-full text-white ml-5"><BiPhoneCall /> Button</a>
+                    <a className="btn bg-green rounded-full text-white ml-5"><IoMdLogIn /> Login</a>
                 </div>
             </div>
         </header>
