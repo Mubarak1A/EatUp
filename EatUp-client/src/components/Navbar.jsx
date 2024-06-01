@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoMdLogIn } from "react-icons/io";
+import AuthModal from './AuthModal';
 
 export default function Navbar() {
     const [sticky, setSticky] = useState(false)
@@ -8,16 +9,16 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             const offSet = window.scrollY;
-            if(offSet > 0){
+            if (offSet > 0) {
                 setSticky(true)
-            } else{
+            } else {
                 setSticky(false)
             }
         }
 
         window.addEventListener('scroll', handleScroll)
 
-        return ( () => {
+        return (() => {
             window.addEventListener('scroll', handleScroll)
         })
 
@@ -89,7 +90,12 @@ export default function Navbar() {
                             </div>
                         </div>
                     </div>
-                    <a className="btn bg-green rounded-full text-white ml-5"><IoMdLogIn /> Login</a>
+                    <button className="btn bg-green rounded-full text-white ml-5"
+                        onClick={() => document.getElementById('my_modal_5').showModal()}
+                    >
+                        <IoMdLogIn /> Login
+                    </button>
+                    <AuthModal />
                 </div>
             </div>
         </header>
