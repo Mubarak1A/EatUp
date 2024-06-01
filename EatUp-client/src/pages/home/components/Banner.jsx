@@ -19,7 +19,7 @@ export default function Banner() {
                                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                 </div>
-                                <p className='text-red'>N1800.00</p>
+                                <p className='text-red'>N 1800.00</p>
                             </div>
                         </div>
                         <div className='sm:flex hidden space-y-8 bg-white py-2 px-3 rounded-2xl items-center gap-3 shadow-md w-64'>
@@ -33,7 +33,7 @@ export default function Banner() {
                                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" readOnly />
                                 </div>
-                                <p className='text-red'>#1800.00</p>
+                                <p className='text-red'>N 1800.00</p>
                             </div>
                         </div>
                     </div>

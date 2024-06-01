@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Cards from "../../components/Cards";
+import Card from "../../components/Card";
 import { FaFilter } from "react-icons/fa";
 
 const Menu = () => {
@@ -167,9 +167,9 @@ const Menu = () => {
         </div>
 
         {/* product card */}
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 ">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 ">
           {currentItems.map((item) => (
-            <Cards key={item._id} item={item} />
+            <Card key={item._id} item={item} />
           ))}
         </div>
       </div>
