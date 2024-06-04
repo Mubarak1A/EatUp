@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config'
 
 export const AuthContext = createContext();
@@ -41,6 +41,21 @@ export default function AuthContextProvider({ children }) {
       displayName: name, photoURL: photoUrl
     })
   }
+
+  //check signed in user
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser)
+        setLoading(false)
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+    
+    return unSubscribe()
+  }, [])
 
   const authInfo = {
     user,
