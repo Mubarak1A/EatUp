@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContextProvider'
 
 export default function AuthModal() {
     const [page, setPage] = useState("login")
@@ -11,6 +12,20 @@ export default function AuthModal() {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    const { signUpWithGmail } = useContext(AuthContext)
+
+    //google signin
+    const handleLogin = () => {
+        signUpWithGmail()
+        .then(result => {
+            const user = result.user;
+            alert('Login Successfull!')
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
     const onSubmit = (data) => console.log(data)
 
@@ -156,7 +171,9 @@ export default function AuthModal() {
 
                     {/* social sign in */}
                     <div className="text-center space-x-3 mb-5">
-                        <button className="btn btn-circle hover:bg-green hover:text-white">
+                        <button className="btn btn-circle hover:bg-green hover:text-white"
+                        onClick={handleLogin}
+                        >
                             <FaGoogle />
                         </button>
                         <button className="btn btn-circle hover:bg-green hover:text-white">
