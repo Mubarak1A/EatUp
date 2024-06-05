@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContextProvider'
 
 export default function AuthModal() {
     const [page, setPage] = useState("login")
+    const [error, setError] = useState("")
 
     const {
         register,
@@ -13,21 +14,48 @@ export default function AuthModal() {
         formState: { errors },
     } = useForm();
 
-    const { signUpWithGmail } = useContext(AuthContext)
+    const { signUpWithGmail, login, createUser } = useContext(AuthContext)
 
     //google signin
     const handleLogin = () => {
         signUpWithGmail()
-        .then(result => {
-            const user = result.user;
-            alert('Login Successfull!')
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                const user = result.user;
+                alert('Login Successfull!')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
-    const onSubmit = (data) => console.log(data)
+    // login
+    const onSubmit = (data) => {
+        const email = data.email
+        const password = data.password
+        login(email, password)
+            .then((result) => {
+                const user = result.user
+                alert('Login Successfull!')
+            })
+            .catch(error => {
+                setError("Invalid Email or/and Password!")
+            })
+    }
+
+    // signup
+    const onSignUpSubmit = (data) => {
+        const email = data.email
+        const password = data.password
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user
+                alert('Account Created Successfull!')
+                setPage('login')
+            })
+            .catch(error => {
+                setError("Invalid Email or/and Password!")
+            })
+    }
 
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -105,7 +133,7 @@ export default function AuthModal() {
                         )
                     }
                     {page === 'signup' && (
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
+                        <form onSubmit={handleSubmit(onSignUpSubmit)} className="card-body" method="dialog">
                             <h3 className="font-bold text-lg">Create A Account!</h3>
 
                             {/* email */}
@@ -140,8 +168,11 @@ export default function AuthModal() {
                             </div>
 
                             {/* error */}
+                            {
+                                error ? <p>{error}</p> : ""
+                            }
 
-                            {/* login btn */}
+                            {/* signUp btn */}
                             <div className="form-control mt-6">
                                 <input
                                     type="submit"
@@ -172,7 +203,7 @@ export default function AuthModal() {
                     {/* social sign in */}
                     <div className="text-center space-x-3 mb-5">
                         <button className="btn btn-circle hover:bg-green hover:text-white"
-                        onClick={handleLogin}
+                            onClick={handleLogin}
                         >
                             <FaGoogle />
                         </button>

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IoMdLogIn } from "react-icons/io";
 import AuthModal from './AuthModal';
+import { AuthContext } from '../contexts/AuthContextProvider';
 
 export default function Navbar() {
     const [sticky, setSticky] = useState(false)
+    const { user } = useContext(AuthContext)
+
+    console.log(user)
 
     // handle scroll function
     useEffect(() => {
@@ -90,11 +94,17 @@ export default function Navbar() {
                             </div>
                         </div>
                     </div>
-                    <button className="btn bg-green rounded-full text-white ml-5"
+                <div>
+                    {
+                        user ? <p>Logout</p> : (
+                            <button className="btn bg-green rounded-full text-white ml-5"
                         onClick={() => document.getElementById('my_modal_5').showModal()}
                     >
                         <IoMdLogIn /> Login
                     </button>
+                        )
+                    }
+                </div>
                     <AuthModal />
                 </div>
             </div>
