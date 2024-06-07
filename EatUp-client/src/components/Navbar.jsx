@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoMdLogIn } from "react-icons/io";
 import AuthModal from './AuthModal';
+import ProfileModal from './profileModal';
 import { AuthContext } from '../contexts/AuthContextProvider';
 
 export default function Navbar() {
     const [sticky, setSticky] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, updateUser } = useContext(AuthContext)
 
     console.log(user)
 
@@ -96,41 +97,50 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div className='ml-5'>
-                        {
-                            user ? (
-                                <div className="drawer drawer-end z-50">
-                                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                                    <div className="drawer-content">
-                                        {/* Page content here */}
-                                        <label htmlFor="my-drawer-4" 
+                        {user && (
+                            <div className="drawer drawer-end z-50">
+                                <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                                <div className="drawer-content">
+                                    {/* Page content here */}
+                                    <label htmlFor="my-drawer-4"
                                         className='drawer-button btn btn-ghost btn-circle avatar'>
-                                            <div className="avatar">
-                                                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                    <img src={
-                                                        user.photoURL ? user.photoURL : 'https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg'
-                                                    } />
-                                                </div>
+                                        <div className="avatar">
+                                            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                <img src={user.photoURL} />
                                             </div>
-                                        </label>
-                                    </div>
-                                    <div className="drawer-side">
-                                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                                        <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
-                                            {/* Sidebar content here */}
-                                            <li><a>Profile</a></li>
-                                            <li><a>Order</a></li>
-                                            <li><a>Settings</a></li>
-                                            <li><a>Logout</a></li>
-                                        </ul>
-                                    </div>
+                                        </div>
+                                    </label>
                                 </div>
-                            ) : (
-                                <button className="btn bg-green rounded-full text-white ml-5"
-                                    onClick={() => document.getElementById('my_modal_5').showModal()}
-                                >
-                                    <IoMdLogIn /> Login
-                                </button>
-                            )
+                                <div className="drawer-side">
+                                    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                                    <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
+                                        {/* Sidebar content here */}
+                                        <li><a>
+                                            <button
+                                                onClick={() => document.getElementById('my_modal_6').showModal()}
+                                            > Profile
+                                            </button>
+                                            <ProfileModal />
+                                        </a></li>
+                                        <li><a>Order</a></li>
+                                        <li><a>Settings</a></li>
+                                        <li onClick={() => {
+                                            localStorage.removeItem('currentuser')
+                                            updateUser(null)
+                                            window.location.reload()
+                                        }}><a>Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+
+                        {!user && (
+                            <button className="btn bg-green rounded-full text-white ml-5"
+                                onClick={() => document.getElementById('my_modal_5').showModal()}
+                            >
+                                <IoMdLogIn /> Login
+                            </button>
+                        )
                         }
                     </div>
                     <AuthModal />
