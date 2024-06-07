@@ -14,13 +14,16 @@ export default function AuthModal() {
         formState: { errors },
     } = useForm();
 
-    const { signUpWithGmail, login, createUser } = useContext(AuthContext)
+    const { signUpWithGmail, login, createUser, updateUser } = useContext(AuthContext)
 
     //google signin
     const handleLogin = () => {
         signUpWithGmail()
             .then(result => {
                 const user = result.user;
+                //console.log(user)
+                updateUser(user.email, user.photoURL)
+                document.getElementById("my_modal_5").close()
                 alert('Login Successfull!')
             })
             .catch(error => {
@@ -35,6 +38,8 @@ export default function AuthModal() {
         login(email, password)
             .then((result) => {
                 const user = result.user
+                updateUser(user.email, user.photoURL)
+                document.getElementById("my_modal_5").close()
                 alert('Login Successfull!')
             })
             .catch(error => {
@@ -49,11 +54,12 @@ export default function AuthModal() {
         createUser(email, password)
             .then((result) => {
                 const user = result.user
+                updateUser(user.email, user.photoURL)
+                document.getElementById("my_modal_5").close()
                 alert('Account Created Successfull!')
-                setPage('login')
             })
             .catch(error => {
-                setError("Invalid Email or/and Password!")
+                setError("Email alreby been used!")
             })
     }
 
@@ -101,7 +107,7 @@ export default function AuthModal() {
 
                                 {/* error */}
                                 {
-                                    errorMessage ? <p className="text-red text-xs italic">{errorMessage}</p> : ""
+                                    error ? <p className="text-red text-xs italic">{error}</p> : ""
                                 }
 
                                 {/* login btn */}
@@ -114,7 +120,7 @@ export default function AuthModal() {
                                 </div>
 
                                 <p className="text-center my-2">
-                                    Donot have an account?{" "}
+                                    {"Dont have an account?"}
                                     <button className="underline text-red ml-1"
                                         onClick={() => setPage("signup")}>
                                         Signup Now
@@ -169,7 +175,7 @@ export default function AuthModal() {
 
                             {/* error */}
                             {
-                                error ? <p>{error}</p> : ""
+                                error ? <p className="text-red text-xs italic">{error}</p> : ""
                             }
 
                             {/* signUp btn */}
@@ -182,12 +188,12 @@ export default function AuthModal() {
                             </div>
 
                             <p className="text-center my-2">
-                                Have an account?{" "}
+                                Already have an account?
                                 <button className="underline text-red ml-1"
                                     onClick={() => setPage("login")}
                                 >
                                     Login
-                                </button>{" "}
+                                </button>
                             </p>
 
                             <button

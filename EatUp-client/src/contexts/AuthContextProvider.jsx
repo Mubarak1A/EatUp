@@ -13,6 +13,10 @@ export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  const updateUser = (email, photoURL) => {
+    setUser({email, photoURL})
+  }
+
   //create an account
   const createUser = (email, password) => {
     setLoading(true)
@@ -59,6 +63,7 @@ export default function AuthContextProvider({ children }) {
 
   const authInfo = {
     user,
+    updateUser,
     createUser,
     signUpWithGmail,
     login,
