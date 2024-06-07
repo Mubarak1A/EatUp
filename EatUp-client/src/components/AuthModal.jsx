@@ -23,6 +23,7 @@ export default function AuthModal() {
                 const user = result.user;
                 //console.log(user)
                 updateUser(user.email, user.photoURL)
+                localStorage.setItem('currentuser', JSON.stringify(user))
                 document.getElementById("my_modal_5").close()
                 alert('Login Successfull!')
             })
@@ -39,6 +40,7 @@ export default function AuthModal() {
             .then((result) => {
                 const user = result.user
                 updateUser(user.email, user.photoURL)
+                localStorage.setItem('currentuser', JSON.stringify(user))
                 document.getElementById("my_modal_5").close()
                 alert('Login Successfull!')
             })
@@ -55,6 +57,7 @@ export default function AuthModal() {
             .then((result) => {
                 const user = result.user
                 updateUser(user.email, user.photoURL)
+                localStorage.setItem('currentuser', JSON.stringify(user))
                 document.getElementById("my_modal_5").close()
                 alert('Account Created Successfull!')
             })

@@ -11,7 +11,6 @@ export default function Navbar() {
 
     // handle scroll function
     useEffect(() => {
-        localStorage.setItem('currentuser', JSON.stringify(user))
         const handleScroll = () => {
             const offSet = window.scrollY;
             if (offSet > 0) {
@@ -27,7 +26,7 @@ export default function Navbar() {
             window.addEventListener('scroll', handleScroll)
         })
 
-    }, [user])
+    }, [])
 
     const navItems = <>
         <li><a href='/'>Home</a></li>

@@ -10,7 +10,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 export default function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('currentuser')))
   const [loading, setLoading] = useState(false)
 
   const updateUser = (email, photoURL) => {
