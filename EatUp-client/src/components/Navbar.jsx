@@ -28,6 +28,7 @@ export default function Navbar() {
         })
 
     }, [user])
+
     const navItems = <>
         <li><a href='/'>Home</a></li>
         <li>
@@ -95,17 +96,41 @@ export default function Navbar() {
                             </div>
                         </div>
                     </div>
-                <div>
-                    {
-                        user ? <p>Logout</p> : (
-                            <button className="btn bg-green rounded-full text-white ml-5"
-                        onClick={() => document.getElementById('my_modal_5').showModal()}
-                    >
-                        <IoMdLogIn /> Login
-                    </button>
-                        )
-                    }
-                </div>
+                    <div className='ml-5'>
+                        {
+                            user ? (
+                                <div className="drawer drawer-end ml-10">
+                                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                                    <div className="drawer-content">
+                                        {/* Page content here */}
+                                        <label htmlFor="my-drawer-4">
+                                            <div className="avatar">
+                                                <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                    <img src={user.photoURL} />
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div className="drawer-side">
+                                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                                        <ul className="menu p-8 w-60 min-h-full bg-base-200 text-base-content">
+                                            {/* Sidebar content here */}
+                                            <li><a>Profile</a></li>
+                                            <li><a>Order</a></li>
+                                            <li><a>Settings</a></li>
+                                            <li><a>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button className="btn bg-green rounded-full text-white ml-5"
+                                    onClick={() => document.getElementById('my_modal_5').showModal()}
+                                >
+                                    <IoMdLogIn /> Login
+                                </button>
+                            )
+                        }
+                    </div>
                     <AuthModal />
                 </div>
             </div>
