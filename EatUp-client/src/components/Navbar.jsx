@@ -99,13 +99,14 @@ export default function Navbar() {
                     <div className='ml-5'>
                         {
                             user ? (
-                                <div className="drawer drawer-end ml-10">
+                                <div className="drawer drawer-end z-50">
                                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                                     <div className="drawer-content">
                                         {/* Page content here */}
-                                        <label htmlFor="my-drawer-4">
+                                        <label htmlFor="my-drawer-4" 
+                                        className='drawer-button btn btn-ghost btn-circle avatar'>
                                             <div className="avatar">
-                                                <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                                     <img src={user.photoURL} />
                                                 </div>
                                             </div>
@@ -113,7 +114,7 @@ export default function Navbar() {
                                     </div>
                                     <div className="drawer-side">
                                         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                                        <ul className="menu p-8 w-60 min-h-full bg-base-200 text-base-content">
+                                        <ul className="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
                                             {/* Sidebar content here */}
                                             <li><a>Profile</a></li>
                                             <li><a>Order</a></li>
