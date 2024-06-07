@@ -106,7 +106,9 @@ export default function Navbar() {
                                         className='drawer-button btn btn-ghost btn-circle avatar'>
                                             <div className="avatar">
                                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                    <img src={user.photoURL} />
+                                                    <img src={
+                                                        user.photoURL ? user.photoURL : 'https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg'
+                                                    } />
                                                 </div>
                                             </div>
                                         </label>
